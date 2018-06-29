@@ -31,4 +31,10 @@ public class Cube extends Structure {
 		
 	}
 	
+	public void displayVertices() {
+		for(Point p : this.vertices) {
+			p.display();
+		}
+	}
+	
 }
