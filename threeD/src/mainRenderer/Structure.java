@@ -10,7 +10,7 @@ public class Structure{
 		
 		public Point(int x, int y, int z) {
 			this.x = x;
-			this.y = win.getHeight() - y;
+			this.y = win.getHeight() - y - 10;
 			this.z = z;			
 		}
 		
@@ -23,8 +23,20 @@ public class Structure{
 
 	public static void main(String[] args) {
 		Structure str = new Structure();
-		Point p = str.new Point(50,50,50);
-		p.display();
+		//Point[] p = new Point[8];
+		Point[] p = {str.new Point(10,10,0),
+					 str.new Point(110,10,0),
+					 str.new Point(110,110,0),
+					 str.new Point(10,110,0),
+					 str.new Point(10,10,100),
+					 str.new Point(110,10,100),
+					 str.new Point(110,110,100),
+					 str.new Point(10,110,100)};
+		for(int i = 0; i < p.length; i++) {
+			//p[i] = str.new Point(20*i, 20*i, 20*i);
+			p[i].display();
+		}
+		//p.display();
 	}
 
 }
