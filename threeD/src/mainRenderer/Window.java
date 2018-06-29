@@ -17,7 +17,6 @@ public class Window extends JFrame implements MouseListener {
 	
 	public Window() {
 		
-
 		super("3D Renderer");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
