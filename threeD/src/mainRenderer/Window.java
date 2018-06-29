@@ -2,7 +2,10 @@ package mainRenderer;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Color;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -14,6 +17,7 @@ public class Window extends JFrame implements MouseListener {
 	private static final long serialVersionUID = -3997719432606609394L;
 	
 	boolean mousePressed, mouseInside;
+	Image content;
 	
 	public Window() {
 		
@@ -30,12 +34,28 @@ public class Window extends JFrame implements MouseListener {
 		//this.frame.pack();
 		
 		getContentPane().setBackground(Color.WHITE);
-		
+				
 		setLocationRelativeTo(null);
+		
+		this.addComponentListener(new ComponentAdapter() {
+			
+			@Override
+			public void componentResized(ComponentEvent evt) {
+				resizeContent();
+			}
+			
+		});
+		
 		addMouseListener(this);
 		setVisible(true);
+		
+		this.resizeContent();
 	}
 	
+	protected void resizeContent() {
+		this.content = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+	}
+
 	public void toggleVisible() {
 		setVisible(!isVisible());
 	}
@@ -43,22 +63,23 @@ public class Window extends JFrame implements MouseListener {
 	/*public void drawCircle(int x, int y) {
 		this.frame.
 	}*/
-	
+		
 	/************************************ PAINTING **************************************/
-	
-	BufferedImage content = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
-	
+		
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawImage(content, 0, 0, this);
+		g.drawImage(content, 0, 0, this);		
+		System.out.println("sth is happening");
+		System.out.println(this.content);
 	}
 	
 	public void fillEllipse(int x, int y, int w, int h) {
-		/*Graphics g = getGraphics();
+		Graphics g = this.content.getGraphics();
 		g.setColor(Color.BLACK);
 		g.fillOval(x, y, w, h);
-		paint(g);*/
+		g.dispose();
+		repaint();
 	}
 	
 	/******************************* MOUSE INTERACTION *********************************/

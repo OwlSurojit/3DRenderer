@@ -16,6 +16,7 @@ public class Structure{
 		
 		public void display() {
 			int v = (int) (this.z / Math.sqrt(2));
+			System.out.println("x+v: " + (this.x+v) + ";   y-v: " + (this.y-v));
 			win.fillEllipse(this.x + v, this.y - v, 5, 5);
 		}
 		
