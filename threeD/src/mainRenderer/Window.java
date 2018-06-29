@@ -1,11 +1,12 @@
 package mainRenderer;
 
+
+// TODO? Maybe reduce the imports by importing java.awt.* ?
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Color;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -18,6 +19,7 @@ public class Window extends JFrame implements MouseListener {
 	
 	boolean mousePressed, mouseInside;
 	Image content;
+	private static final int maxWidth = 960, maxHeight = 540;
 	
 	public Window() {
 		
@@ -25,6 +27,7 @@ public class Window extends JFrame implements MouseListener {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(320, 180));
+		setMaximumSize(new Dimension(maxWidth, maxHeight));
 		
 		// Add Contents and pack them to the screen (so they resize properly)
 		
@@ -37,41 +40,23 @@ public class Window extends JFrame implements MouseListener {
 				
 		setLocationRelativeTo(null);
 		
-		this.addComponentListener(new ComponentAdapter() {
-			
-			@Override
-			public void componentResized(ComponentEvent evt) {
-				resizeContent();
-			}
-			
-		});
-		
 		addMouseListener(this);
 		setVisible(true);
 		
-		this.resizeContent();
-	}
-	
-	protected void resizeContent() {
-		this.content = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		this.content = new BufferedImage(maxWidth, maxHeight, BufferedImage.TYPE_INT_ARGB);
 	}
 
 	public void toggleVisible() {
-		setVisible(!isVisible());
+		this.setVisible(!this.isVisible());
 	}
 	
-	/*public void drawCircle(int x, int y) {
-		this.frame.
-	}*/
-		
+	
 	/************************************ PAINTING **************************************/
 		
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.drawImage(content, 0, 0, this);		
-		System.out.println("sth is happening");
-		System.out.println(this.content);
 	}
 	
 	public void fillEllipse(int x, int y, int w, int h) {
@@ -81,6 +66,7 @@ public class Window extends JFrame implements MouseListener {
 		g.dispose();
 		repaint();
 	}
+	
 	
 	/******************************* MOUSE INTERACTION *********************************/
 
