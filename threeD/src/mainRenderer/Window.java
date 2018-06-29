@@ -33,7 +33,6 @@ public class Window extends JFrame implements MouseListener {
 		
 		setLocationRelativeTo(null);
 		addMouseListener(this);
-		//this.fillEllipse(50, 50, 50, 50);
 		setVisible(true);
 	}
 	

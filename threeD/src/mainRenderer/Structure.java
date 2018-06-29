@@ -1,6 +1,7 @@
 package mainRenderer;
 
 public class Structure{
+	
 	Window win = new Window();
 	
 	public class Point{
