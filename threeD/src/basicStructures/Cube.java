@@ -37,4 +37,28 @@ public class Cube extends Structure {
 		}
 	}
 	
+	public void displayEdges() {
+		displayLine(this.vertices[0], this.vertices[1]);
+		displayLine(this.vertices[0], this.vertices[3]);
+		displayLine(this.vertices[0], this.vertices[4]);
+		displayLine(this.vertices[2], this.vertices[1]);
+		displayLine(this.vertices[2], this.vertices[3]);
+		displayLine(this.vertices[2], this.vertices[6]);
+		displayLine(this.vertices[5], this.vertices[1]);
+		displayLine(this.vertices[5], this.vertices[4]);
+		displayLine(this.vertices[5], this.vertices[6]);
+		displayLine(this.vertices[7], this.vertices[3]);
+		displayLine(this.vertices[7], this.vertices[4]);
+		displayLine(this.vertices[7], this.vertices[6]);
+
+	}
+	
+	
+	public static void main(String[] args) {
+		Cube c = new Cube(10,10,10,100);
+		c.displayVertices();
+		
+		c.displayEdges();
+	}
+	
 }

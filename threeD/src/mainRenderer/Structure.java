@@ -2,7 +2,7 @@ package mainRenderer;
 
 public class Structure{
 	
-	Window win = new Window();
+	static Window win = new Window();
 	
 	public class Point{
 		
@@ -14,11 +14,22 @@ public class Structure{
 			this.z = z;			
 		}
 		
-		public void display() {
-			int v = (int) (this.z / Math.sqrt(2));
-			win.fillEllipse(this.x + v, this.y - v, 5, 5);
+		int[] calc2DPosition() {
+			int v = (int) (this.z * Math.sqrt(2) / 4);
+			return new int[] {this.x + v, this.y - v};
 		}
 		
+		public void display() {
+			int[] pos = this.calc2DPosition();
+			win.fillEllipse(pos[0], pos[1], 6, 6);
+		}
+		
+	}
+	
+	public static void displayLine(Point a, Point b) {
+		int[] posA = a.calc2DPosition();
+		int[] posB = b.calc2DPosition();
+		win.line(posA[0], posA[1], posB[0], posB[1]);
 	}
 
 }

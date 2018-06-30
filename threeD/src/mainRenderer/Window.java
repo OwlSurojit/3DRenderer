@@ -70,6 +70,14 @@ public class Window extends JFrame implements MouseListener {
 		repaint();
 	}
 	
+	public void line(int x0, int y0, int x1, int y1) {
+		Graphics g = this.content.getGraphics();
+		g.setColor(Color.BLACK);
+		g.drawLine(x0, y0, x1, y1);
+		g.dispose();
+		repaint();
+	}
+	
 	
 	/******************************* MOUSE INTERACTION *********************************/
 
