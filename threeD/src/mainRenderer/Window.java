@@ -65,7 +65,7 @@ public class Window extends JFrame implements MouseListener {
 	public void fillEllipse(int x, int y, int w, int h) {
 		Graphics g = this.content.getGraphics();
 		g.setColor(Color.BLACK);
-		g.fillOval(x, y, w, h);
+		g.fillOval(x - w/2, y - h/2, w, h);
 		g.dispose();
 		repaint();
 	}
