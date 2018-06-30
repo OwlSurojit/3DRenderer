@@ -55,9 +55,8 @@ public class Cube extends Structure {
 	
 	
 	public static void main(String[] args) {
-		Cube c = new Cube(10,10,10,100);
+		Cube c = new Cube(10,10,10,200);
 		c.displayVertices();
-		
 		c.displayEdges();
 	}
 	

@@ -1,12 +1,7 @@
 package mainRenderer;
 
 
-// TODO? Maybe reduce the imports by importing java.awt.* ?
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -71,8 +66,9 @@ public class Window extends JFrame implements MouseListener {
 	}
 	
 	public void line(int x0, int y0, int x1, int y1) {
-		Graphics g = this.content.getGraphics();
+		Graphics2D g = (Graphics2D) this.content.getGraphics();
 		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke(2));
 		g.drawLine(x0, y0, x1, y1);
 		g.dispose();
 		repaint();
