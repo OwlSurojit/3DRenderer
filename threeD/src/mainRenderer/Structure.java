@@ -1,8 +1,13 @@
 package mainRenderer;
 
-public class Structure{
+public abstract class Structure{
+	
+	/*
+	 * Don't forget to call "super.initVertices(this.vertices)" at the end of own initVertices method!
+	 */
 	
 	static Window win = new Window();
+	public Point[] vertices;
 	
 	public class Point{
 		
@@ -24,6 +29,23 @@ public class Structure{
 			win.fillEllipse(pos[0], pos[1], 6, 6);
 		}
 		
+	}
+	
+	public void initVertices(Point[] vertices) {
+		this.vertices = vertices;
+	}
+	
+	public void displayVertices() {
+		for(Point p : this.vertices) {
+			p.display();
+		}
+	}
+	
+	public abstract void displayEdges();
+	
+	public void display() {
+		this.displayVertices();
+		this.displayEdges();
 	}
 	
 	public static void displayLine(Point a, Point b) {
