@@ -14,10 +14,10 @@ public class Window extends JFrame implements MouseListener {
 	
 	boolean mousePressed, mouseInside;
 	Image content;
-	private static final int minWidth = 640,
-							 minHeight = 360,
-							 maxWidth = 960,
-							 maxHeight = 540;
+	static final int minWidth = 640,
+					 minHeight = 360,
+					 maxWidth = 960,
+					 maxHeight = 540;
 	
 	public Window() {
 		
@@ -26,6 +26,7 @@ public class Window extends JFrame implements MouseListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(minWidth, minHeight));
 		setMaximumSize(new Dimension(maxWidth, maxHeight));
+		setSize(new Dimension(maxWidth, maxHeight));
 		
 		// Add Contents and pack them to the screen (so they resize properly)
 		
