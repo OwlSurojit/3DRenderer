@@ -1,11 +1,7 @@
 package mainRenderer;
 
 public abstract class Structure{
-	
-	/*
-	 * Don't forget to call "super.initVertices(this.vertices)" at the end of own initVertices method!
-	 */
-	
+		
 	static Window win = new Window();
 	public Point[] vertices;
 	
@@ -31,6 +27,7 @@ public abstract class Structure{
 		
 	}
 	
+	@Deprecated(since = "06.07.18", forRemoval = true)
 	public void initVertices(Point[] vertices) {
 		this.vertices = vertices;
 	}
