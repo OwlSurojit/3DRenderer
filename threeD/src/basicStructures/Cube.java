@@ -41,10 +41,4 @@ public class Cube extends Structure {
 		displayLine(this.vertices[7], this.vertices[6]);
 	}
 	
-	
-	public static void main(String[] args) {
-		Cube c = new Cube(10,10,10,200);
-		c.display();
-	}
-	
 }
