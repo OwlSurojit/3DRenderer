@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 
@@ -12,21 +13,21 @@ public class Window extends JFrame implements MouseListener {
 	
 	private static final long serialVersionUID = -3997719432606609394L;
 	
-	boolean mousePressed, mouseInside;
-	Image content;
-	static final int minWidth = 640,
-					 minHeight = 360,
-					 maxWidth = 960,
-					 maxHeight = 540;
+	public boolean mousePressed, mouseInside;
+	private Image content;
+	private final int minWidth = 640,
+					  minHeight = 360,
+					  maxWidth = 960,
+					  maxHeight = 540;
 	
 	public Window() {
 		
 		super("3D Renderer");
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setMinimumSize(new Dimension(minWidth, minHeight));
-		setMaximumSize(new Dimension(maxWidth, maxHeight));
-		setSize(new Dimension(maxWidth, maxHeight));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setMinimumSize(new Dimension(minWidth, minHeight));
+		this.setMaximumSize(new Dimension(maxWidth, maxHeight));
+		this.setSize(new Dimension(maxWidth, maxHeight));
 		
 		// Add Contents and pack them to the screen (so they resize properly)
 		
@@ -35,18 +36,27 @@ public class Window extends JFrame implements MouseListener {
 		//this.frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
 		//this.frame.pack();
 		
-		getContentPane().setBackground(Color.WHITE);
+		this.getContentPane().setBackground(Color.WHITE);
 				
-		setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		
-		addMouseListener(this);
-		setVisible(true);
+		this.addMouseListener(this);
+		this.setVisible(true);
 		
 		this.content = new BufferedImage(maxWidth, maxHeight, BufferedImage.TYPE_INT_ARGB);
 	}
 
 	public void toggleVisible() {
 		this.setVisible(!this.isVisible());
+	}
+	
+	public HashMap<String, Integer> getSizePrefs() {
+		HashMap<String, Integer> sizePrefs = new HashMap<String, Integer>(4);
+		sizePrefs.put("minWidth", this.minWidth);
+		sizePrefs.put("minHeight", this.minHeight);
+		sizePrefs.put("maxWidth", this.maxWidth);
+		sizePrefs.put("maxHeight", this.maxHeight);
+		return sizePrefs;
 	}
 	
 	

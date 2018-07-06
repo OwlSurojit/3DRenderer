@@ -11,7 +11,7 @@ public abstract class Structure{
 		
 		public Point(int x, int y, int z) {
 			this.x = x;
-			this.y = Window.maxHeight - y;
+			this.y = win.getSizePrefs().get("maxHeight") - y;
 			this.z = z;			
 		}
 		
