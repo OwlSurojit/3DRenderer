@@ -79,7 +79,7 @@ public class Window extends JFrame implements MouseListener {
 	public void line(int x0, int y0, int x1, int y1) {
 		Graphics2D g = (Graphics2D) this.content.getGraphics();
 		g.setColor(Color.BLACK);
-		g.setStroke(new BasicStroke(2));
+		g.setStroke(new BasicStroke(1));
 		g.drawLine(x0, y0, x1, y1);
 		g.dispose();
 		repaint();

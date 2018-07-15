@@ -4,14 +4,17 @@ import mainRenderer.Structure;
 
 public class Prism extends Structure {
 	
+	private int baseVertices;
+	
 	public Prism(int baseCentreX, int baseCentreY, int baseCentreZ, int baseVertices, int radius, int height) {
 		/*
 		 * Defines a Prism with an equilateral base of int baseVertices (2nd arg) vertices.
-		 * Its centre is the Point baseCentre (1st arg).
-		 * Its radius is int radius (3rd arg).
-		 * The height of the prism is defined with int height (4th arg).
+		 * Its base's centre is the Point baseCentre (1st to 3rd args).
+		 * Its base's radius is int radius (4th arg).
+		 * The prism's height is defined by int height (5th arg).
 		 */
 		this.vertices = new Point[2*baseVertices];
+		this.baseVertices = baseVertices;
 		float alpha = 360 / baseVertices;
 		for (int i = 0; i < baseVertices; i++) {
 			// X and Z Coordinates of the base's vertices relative to the Window screen
@@ -24,7 +27,13 @@ public class Prism extends Structure {
 
 	@Override
 	public void displayEdges() {
-		
+		for(int i = 0; i < this.baseVertices-1; i++) {
+			displayLine(this.vertices[i], this.vertices[i+1]);
+			displayLine(this.vertices[this.baseVertices+i], this.vertices[this.baseVertices+i+1]);
+			displayLine(this.vertices[i], this.vertices[baseVertices+i]);
+		}
+		displayLine(this.vertices[this.baseVertices-1], this.vertices[0]);
+		displayLine(this.vertices[2*this.baseVertices-1], this.vertices[this.baseVertices]);
 	}
 	
 	public static void main(String[] args) {
